@@ -1,0 +1,29 @@
+---
+import { getEntry } from "astro:content";
+
+const keystatic = await getEntry("pages", "saved-by-keystatic");
+const manual = await getEntry("pages", "saved-manually");
+
+const { Content: KeystaticList } = await keystatic.render();
+const { Content: ManualList } = await manual.render();
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Astro Keystatic Markdown Lists</title>
+	</head>
+	<body>
+		<h1>Astro Keystatic Markdown Lists</h1>
+		<section>
+			<h2>Markdown list saved by Keystatic</h2>
+			<KeystaticList />
+		</section>
+		<section>
+			<h2>Markdown list saved manually</h2>
+			<ManualList />
+		</section>
+	</body>
+</html>
